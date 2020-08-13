@@ -3,9 +3,10 @@ class Column {
     this.column = ["", "", "", "", "", ""];
   }
   add(playerNum) {
-    for (let i = 0; i < this.column.length; i++) {
+    for (let i = 6; i >= this.column.length; i++) {
       if (this.column[i] === "") {
         this.column[i] = playerNum;
+        return;
       }
     }
   }
