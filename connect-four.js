@@ -17,15 +17,12 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
       boardHolder.classList.remove("is-invisible");
       gameName.innerHTML = game.getName();
-        // console.log("test")
-      for (let i = 0; i <= 6; i++){
-        const columnTarget = getElementById(`column-${i}`);
-        // console.log(columnTarget);
-        // console.log(i);
-        if (game.isColumnFull(i)){
-            columnTarget.classList.add("full");
+      for (let i = 0; i <= 6; i++) {
+        const columnTarget = document.getElementById(`column-${i}`);
+        if (game.isColumnFull(i)) {
+          columnTarget.classList.add("full");
         } else {
-            columnTarget.classList.remove("full");
+          columnTarget.classList.remove("full");
         }
       }
 
@@ -38,22 +35,21 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       for (let i = 0; i <= 5; i++) {
-          for (let j = 0; j <= 6; j++){
-            let tokenSquare = document.getElementById(`square-${i}-${j}`);
-            let status = game.getTokenAt(i, j)
-            tokenSquare.innerHTML = "";
-            if (status === 1){
-                let newEl = document.createElement("div");
-                newEl.classList.add("token", "red");
-                tokenSquare.appendChild(newEl);
-            } else if (status === 2){
-                let newEl = document.createElement("div");
-                newEl.classList.add("token", "black");
-                tokenSquare.appendChild(newEl);
-            }
+        for (let j = 0; j <= 6; j++) {
+          let tokenSquare = document.getElementById(`square-${i}-${j}`);
+          let status = game.getTokenAt(i, j);
+          tokenSquare.innerHTML = "";
+          if (status === 1) {
+            let newEl = document.createElement("div");
+            newEl.classList.add("token", "red");
+            tokenSquare.appendChild(newEl);
+          } else if (status === 2) {
+            let newEl = document.createElement("div");
+            newEl.classList.add("token", "black");
+            tokenSquare.appendChild(newEl);
+          }
         }
-    }
-
+      }
     }
   }
 
@@ -74,11 +70,13 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   clickTargets.addEventListener("click", (event) => {
-      if (event.target.id.startsWith("column")){
-          const currentSquare = event.target.id;
-          const columnIndex = Number.parseInt(currentSquare[currentSquare.length - 1]);
-          game.playInColumn(columnIndex);
-          updateUI();
-      }
+    if (event.target.id.startsWith("column")) {
+      const currentSquare = event.target.id;
+      const columnIndex = Number.parseInt(
+        currentSquare[currentSquare.length - 1]
+      );
+      game.playInColumn(columnIndex);
+      updateUI();
+    }
   });
 });

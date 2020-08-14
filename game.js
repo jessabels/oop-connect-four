@@ -6,14 +6,19 @@ class Game {
     this.playerOneName = playerOneName;
     this.playerTwoName = playerTwoName;
     this.trackPlayer = 1;
+    this.winnerNumber = 0;
     this.columns = [];
-    for (let i = 0; i < 7; i++){
-        this.columns.push(new Column());
+    for (let i = 0; i < 7; i++) {
+      this.columns.push(new Column());
     }
   }
 
   getName() {
-    return `${this.playerOneName} vs ${this.playerTwoName}`;
+    if (this.winnerNumber === 0) {
+      return `${this.playerOneName} vs ${this.playerTwoName}`;
+    } else if (this.winnerNumber === 3) {
+      return `${this.playerOneName} ties with ${this.playerTwoName}!`;
+    }
   }
 
   playInColumn(columnObjIndex) {
@@ -21,16 +26,27 @@ class Game {
     columnObj.add(this.trackPlayer);
 
     if (this.trackPlayer === 1) {
-        this.trackPlayer = 2;
+      this.trackPlayer = 2;
     } else {
-        this.trackPlayer = 1;
+      this.trackPlayer = 1;
     }
+    this.checkForTie();
   }
 
-  isColumnFull(columnObjIndex){
+  checkForTie() {
+    let count = 0;
+
+    for (let i = 0; i <= 6; i++) {
+      if (this.isColumnFull(i) === true) {
+        count++;
+      }
+    }
+    if (count === 7) {
+      this.winnerNumber = 3;
+    }
+  }
+  isColumnFull(columnObjIndex) {
     let columnObj = this.columns[columnObjIndex];
-    console.log(columnObj);
-    console.log(columnObj.isFull());
     return columnObj.isFull();
   }
 
