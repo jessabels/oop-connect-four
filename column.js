@@ -3,12 +3,14 @@ class Column {
     this.column = ["","","","","",""];
   }
   add(playerNum) {
-    for (let i = 5; i >= 0; i--) {
-      if (this.column[i] === "") {
-        this.column[i] = playerNum;
-        return;
+      if (!this.isFull()){
+          for (let i = 5; i >= 0; i--) {
+            if (this.column[i] === "") {
+              this.column[i] = playerNum;
+              return;
+            }
+          }
       }
-    }
   }
   getTokenAt(rowIndexNum) {
     if (this.column[rowIndexNum] === "") {
@@ -18,6 +20,14 @@ class Column {
     } else if (this.column[rowIndexNum] === 2) {
       return 2;
     }
+  }
+  isFull(){
+      for (let i = 0; i < this.column.length; i++){
+          if (this.column[i] === ""){
+            return false;
+        }
+    }
+    return true;
   }
 }
 

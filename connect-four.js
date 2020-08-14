@@ -17,6 +17,17 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
       boardHolder.classList.remove("is-invisible");
       gameName.innerHTML = game.getName();
+        // console.log("test")
+      for (let i = 0; i <= 6; i++){
+        const columnTarget = getElementById(`column-${i}`);
+        // console.log(columnTarget);
+        // console.log(i);
+        if (game.isColumnFull(i)){
+            columnTarget.classList.add("full");
+        } else {
+            columnTarget.classList.remove("full");
+        }
+      }
 
       if (game.trackPlayer === 1) {
         clickTargets.classList.remove("black");
@@ -40,8 +51,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 newEl.classList.add("token", "black");
                 tokenSquare.appendChild(newEl);
             }
-          }
-      }
+        }
+    }
+
     }
   }
 
@@ -62,9 +74,11 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   clickTargets.addEventListener("click", (event) => {
-    const currentSquare = event.target.id;
-    const columnIndex = Number.parseInt(currentSquare[currentSquare.length - 1]);
-    game.playInColumn(columnIndex);
-    updateUI();
+      if (event.target.id.startsWith("column")){
+          const currentSquare = event.target.id;
+          const columnIndex = Number.parseInt(currentSquare[currentSquare.length - 1]);
+          game.playInColumn(columnIndex);
+          updateUI();
+      }
   });
 });

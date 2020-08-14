@@ -27,6 +27,13 @@ class Game {
     }
   }
 
+  isColumnFull(columnObjIndex){
+    let columnObj = this.columns[columnObjIndex];
+    console.log(columnObj);
+    console.log(columnObj.isFull());
+    return columnObj.isFull();
+  }
+
   getTokenAt(rowIndex, columnObjIndex) {
     let columnObj = this.columns[columnObjIndex];
     return columnObj.getTokenAt(rowIndex);
