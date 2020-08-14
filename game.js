@@ -1,4 +1,5 @@
 import Column from "./column.js";
+import ColumnWinInspector from "./column-win-inspector.js"
 
 // Manages state
 class Game {
@@ -31,6 +32,10 @@ class Game {
       this.trackPlayer = 1;
     }
     this.checkForTie();
+    let winInspect = new ColumnWinInspector(columnObj);
+    if (winInspect.inspect()){
+        this.
+    }
   }
 
   checkForTie() {
