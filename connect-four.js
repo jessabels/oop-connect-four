@@ -17,6 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
       boardHolder.classList.remove("is-invisible");
       gameName.innerHTML = game.getName();
+      gameName.style.textAlign = "center"
       for (let i = 0; i <= 6; i++) {
         const columnTarget = document.getElementById(`column-${i}`);
         if (game.isColumnFull(i)) {
@@ -70,13 +71,17 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   clickTargets.addEventListener("click", (event) => {
-    if (event.target.id.startsWith("column")) {
-      const currentSquare = event.target.id;
-      const columnIndex = Number.parseInt(
-        currentSquare[currentSquare.length - 1]
-      );
-      game.playInColumn(columnIndex);
-      updateUI();
-    }
+      if (event.target.id.includes("column")){
+          if (game.winnerNumber > 0) {
+              return;
+          } else {
+            const currentSquare = event.target.id;
+            const columnIndex = Number.parseInt(
+            currentSquare[currentSquare.length - 1]
+            );
+            game.playInColumn(columnIndex);
+            updateUI();
+          }
+      }
   });
 });

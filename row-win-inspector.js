@@ -5,7 +5,7 @@ class RowWinInspector {
   inspect() {
     for (let j = 0; j < this.columns[0].column.length; j++) {
       if (
-        this.columns[0].column[j] !== "" &&
+        this.columns[0].column[j - 1] !== "" &&
         this.columns[0].column[j] === this.columns[1].column[j] &&
         this.columns[1].column[j] === this.columns[2].column[j] &&
         this.columns[2].column[j] === this.columns[3].column[j] &&
