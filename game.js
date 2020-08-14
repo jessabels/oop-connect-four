@@ -13,7 +13,7 @@ class Game {
   }
 
   getName() {
-    return `${this.playerOneName} VS ${this.playerTwoName}`;
+    return `${this.playerOneName} vs ${this.playerTwoName}`;
   }
 
   playInColumn(columnObjIndex) {

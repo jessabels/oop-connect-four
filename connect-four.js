@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
       boardHolder.classList.remove("is-invisible");
       gameName.innerHTML = game.getName();
-      console.log(game.columns); // Testing columns
+
       if (game.trackPlayer === 1) {
         clickTargets.classList.remove("black");
         clickTargets.classList.add("red");
@@ -25,6 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
         clickTargets.classList.remove("red");
         clickTargets.classList.add("black");
       }
+
       for (let i = 0; i <= 5; i++) {
           for (let j = 0; j <= 6; j++){
             let tokenSquare = document.getElementById(`square-${i}-${j}`);
@@ -38,8 +39,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 let newEl = document.createElement("div");
                 newEl.classList.add("token", "black");
                 tokenSquare.appendChild(newEl);
-            } else {
-                return;
             }
           }
       }

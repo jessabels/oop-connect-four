@@ -1,9 +1,9 @@
 class Column {
-  constructor(column) {
-    this.column = ["", "", "", "", "", ""];
+  constructor() {
+    this.column = ["","","","","",""];
   }
   add(playerNum) {
-    for (let i = 6; i >= this.column.length; i++) {
+    for (let i = 5; i >= 0; i--) {
       if (this.column[i] === "") {
         this.column[i] = playerNum;
         return;
